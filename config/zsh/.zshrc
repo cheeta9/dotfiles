@@ -52,6 +52,8 @@ setopt PUSHD_IGNORE_DUPS
 ### theme ###
 eval "$(starship init zsh)"
 
+### homebrew ###
+eval "$(/opt/homebrew/bin/brew shellenv)"
 ### anyenv ###
 eval "$(anyenv init -)"
 ### rbenv ###
