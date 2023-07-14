@@ -69,4 +69,7 @@ eval "$(direnv hook zsh)"
 ### key binds ###
 
 ### plugins ###
+zinit wait lucid null for \
+    atinit'source "$ZDOTDIR/.zshrc.lazy"' \
+    @'zdharma-continuum/null'
 
