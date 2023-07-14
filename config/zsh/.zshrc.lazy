@@ -14,3 +14,7 @@ zinit wait lucid blockf light-mode for \
     @'zsh-users/zsh-completions' \
     @'zdharma-continuum/fast-syntax-highlighting'
 
+### completion styles ###
+zstyle ':completion:*:default' menu select=1
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
