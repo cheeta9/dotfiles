@@ -49,9 +49,6 @@ setopt INTERACTIVE_COMMENTS
 setopt PRINT_EIGHT_BIT
 setopt PUSHD_IGNORE_DUPS
 
-### theme ###
-eval "$(starship init zsh)"
-
 ### homebrew ###
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ### anyenv ###
@@ -67,6 +64,9 @@ export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 ### direnv ###
 eval "$(direnv hook zsh)"
+
+### theme ###
+eval "$(starship init zsh)"
 
 ### key binds ###
 
