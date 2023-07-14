@@ -20,3 +20,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 ### autoloads ###
 autoload -Uz cdr
+autoload -Uz chpwd_recent_dirs
+autoload -Uz _zinit
+zpcompinit
+
