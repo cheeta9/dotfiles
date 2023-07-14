@@ -18,6 +18,11 @@ zinit wait lucid blockf light-mode for \
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
+### local ###
+if [ -f "$ZDOTDIR/.zshrc.local" ]; then
+    source "$ZDOTDIR/.zshrc.local"
+fi
+
 ### autoloads ###
 autoload -Uz cdr
 autoload -Uz chpwd_recent_dirs
