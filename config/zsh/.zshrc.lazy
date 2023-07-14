@@ -18,3 +18,5 @@ zinit wait lucid blockf light-mode for \
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
+### autoloads ###
+autoload -Uz cdr
