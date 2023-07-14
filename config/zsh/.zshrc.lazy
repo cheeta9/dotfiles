@@ -1,3 +1,11 @@
+### aliases ###
+alias la='ls -a'
+alias ll='ls -al'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias be='bundle exec'
+
 ### zsh plugins ###
 zinit wait lucid blockf light-mode for \
     atload'async_init' @'mafredri/zsh-async' \
