@@ -19,3 +19,29 @@ hook_add = '''
 let g:airline_theme='gruvbox'
 '''
 
+# Gitのステータスをファイル左横に表示するやつ
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+set updatetime=100
+nnoremap ]h <Plug>(GitGutterNextHunk)
+nnoremap [h <Plug>(GitGutterPrevHunk)
+nnoremap ghs <Plug>(GitGutterStageHunk)
+nnoremap ghu <Plug>(GitGutterUndoHunk)
+nnoremap ghp <Plug>(GitGutterPreviewHunk)
+'''
+
+# vim上でGit操作可能にするやつ
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+nnoremap <Leader>ga :G add %:p<CR><CR>
+nnoremap <Leader>gc :G commit<CR><CR>
+nnoremap <Leader>gs :G status<CR>
+nnoremap <Leader>gp :G push<CR>
+nnoremap <Leader>gd :G diff<CR>
+nnoremap <Leader>gl :G log<CR>
+nnoremap <Leader>glo :G log --oneline<CR>
+nnoremap <Leader>gb :G blame<CR>
+'''
+
