@@ -2,3 +2,10 @@
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 
+# colorschemes
+[[plugins]]
+repo = 'morhetz/gruvbox'
+hook_add = '''
+colorscheme gruvbox
+'''
+
