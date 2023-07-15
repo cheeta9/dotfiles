@@ -33,21 +33,21 @@ zshaddhistory() {
 }
 
 ### option ###
-setopt APPEND_HISTORY
-setopt AUTO_CD
-setopt AUTO_PUSHD
-setopt EXTENDED_HISTORY
-setopt GLOBDOTS
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_REDUCE_BLANKS
-setopt HIST_SAVE_NO_DUPS
-setopt MAGIC_EQUAL_SUBST
-setopt NO_FLOW_CONTROL
-setopt NO_SHARE_HISTORY
-setopt INTERACTIVE_COMMENTS
-setopt PRINT_EIGHT_BIT
-setopt PUSHD_IGNORE_DUPS
+setopt APPEND_HISTORY         # 履歴を追加（毎回 .zsh_history を作るのではなく）
+setopt AUTO_CD                # ディレクトリと解釈できる文字列を打てば cd する
+setopt AUTO_PUSHD             # cd 時に元のディレクトリを自動でスタックに積む
+setopt EXTENDED_HISTORY       # zsh の開始・終了時刻を履歴に保存
+setopt GLOBDOTS               # ドットの指定なしで「.」から始まるファイルをマッチ
+setopt HIST_IGNORE_ALL_DUPS   # 重複するコマンド行は古いものを削除
+setopt HIST_IGNORE_SPACE      # スペースで始まるコマンド行はヒストリから削除
+setopt HIST_REDUCE_BLANKS     # 余分な空白は詰めて記録
+setopt HIST_SAVE_NO_DUPS      # 古いコマンドと同じものは無視
+setopt MAGIC_EQUAL_SUBST      # 「=」以降の補完を有効にする
+setopt NO_FLOW_CONTROL        # Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
+setopt NO_SHARE_HISTORY       # 履歴を共有しない
+setopt INTERACTIVE_COMMENTS   # 「#」以降をコメントとして扱う
+setopt PRINT_EIGHT_BIT        # 日本語ファイル名を表示可能にする
+setopt PUSHD_IGNORE_DUPS      # 重複するディレクトリはスタックに積まない
 
 ### homebrew ###
 eval "$(/opt/homebrew/bin/brew shellenv)"
