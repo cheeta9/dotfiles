@@ -1,0 +1,4 @@
+# editorconfig-vim
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
