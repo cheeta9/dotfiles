@@ -9,3 +9,13 @@ hook_add = '''
 colorscheme gruvbox
 '''
 
+# airline
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+let g:airline_theme='gruvbox'
+'''
+
