@@ -12,6 +12,12 @@ alias be='bundle exec'
 export FZF_DEFAULT_OPTS='--reverse --border --ansi --bind="ctrl-d:print-query,ctrl-p:replace-query"'
 export FZF_DEFAULT_COMMAND='fd --hidden --color=always'
 
+### bat ###
+export MANPAGER="sh -c 'col -bx | bat --color=always --language=man --plain'"
+
+alias cat='bat --paging=never'
+alias batman='bat --language=man --plain'
+
 ### zeno.zsh ###
 export ZENO_HOME="$XDG_CONFIG_HOME/zeno"
 export ZENO_ENABLE_SOCK=1
