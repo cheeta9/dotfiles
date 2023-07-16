@@ -44,7 +44,8 @@ export ZENO_GIT_CAT="bat --color=always"
 __zeno_atload() {
     bindkey ' '  zeno-auto-snippet
     bindkey '^M' zeno-auto-snippet-and-accept-line
-    bindkey '^P' zeno-completion
+    bindkey '^N' zeno-insert-snippet
+    bindkey '^I' zeno-completion
 }
 
 zinit wait lucid light-mode for \
