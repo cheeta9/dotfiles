@@ -45,6 +45,27 @@ nnoremap <Leader>glo :G log --oneline<CR>
 nnoremap <Leader>gb :G blame<CR>
 '''
 
+### fzf-preview.vim ###
+[[plugins]]
+repo = 'junegunn/fzf'
+build = 'bash install --bin'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+
+[[plugins]]
+repo = 'yuki-ycino/fzf-preview.vim'
+rev = 'release/rpc'
+hook_add = '''
+nnoremap <silent>//     <cmd>FzfPreviewLinesRpc<CR>
+nnoremap <silent><C-f>  <cmd>FzfPreviewBufferLinesRpc<CR>
+nnoremap <silent><C-p>  <cmd>FzfPreviewProjectFilesRpc<CR>
+
+"nnoremap <silent>//     :BLines<CR>
+"nnoremap <silent><C-f>  :Lines<CR>
+"nnoremap <silent><C-p>  :Files<CR>
+'''
+
 # フォーカス移動を自由自在にするやつ
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
