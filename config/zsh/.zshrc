@@ -69,9 +69,8 @@ eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
 ### key binds ###
-bindkey '^a' autosuggest-accept
-bindkey '^e' autosuggest-execute
-bindkey '^q' autosuggest-clear
+bindkey '^k' autosuggest-accept
+bindkey '^j' autosuggest-execute
 
 ### plugins ###
 zinit wait lucid null for \
