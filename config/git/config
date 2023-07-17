@@ -1,0 +1,22 @@
+[core]
+    quotepath = false
+    editor = vim
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    line-numbers = true
+[user]
+    email = cheeta9.mail@gmail.com
+    name = cheeta9
+[fetch]
+    prune = true
+[pull]
+    ff = only
+[merge]
+    ff = false
+    conflictStyle = diff3
+[credential]
+    helper = osxkeychain
+
