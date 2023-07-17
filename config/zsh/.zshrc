@@ -29,7 +29,7 @@ export SAVEHIST=10000
 
 zshaddhistory() {
     local line="${1%%$'\n'}"
-    [[ ! "$line" =~ "^(cd|history|jj?|lazygit|la|ll|ls|rm|rmdir|trash)($| )" ]]
+    [[ ! "$line" =~ "^(history|jj?|lazygit|rm|rmdir|trash)($| )" ]]
 }
 
 ### option ###
