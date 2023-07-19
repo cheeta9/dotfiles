@@ -45,7 +45,14 @@ nnoremap <Leader>glo :G log --oneline<CR>
 nnoremap <Leader>gb :G blame<CR>
 '''
 
-### fzf-preview.vim ###
+# ファイラー
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+hook_add = '''
+nnoremap <Leader>e <cmd>Fern . -reveal=%<CR>
+'''
+
+# fuzzy finder
 [[plugins]]
 repo = 'junegunn/fzf'
 build = 'bash install --bin'
