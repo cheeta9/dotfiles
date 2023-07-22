@@ -56,9 +56,6 @@ nnoremap <silent>sK     <C-w>K
 nnoremap <silent>sL     <C-w>L
 nnoremap <silent><C-\>  :vsplit<CR>
 nnoremap <silent><C-_>  :split<CR>
-nnoremap <silent><C-h>  :bprev<CR>
-nnoremap <silent><C-l>  :bnext<CR>
-nnoremap <silent><C-w>  :bdelete<CR>
 nnoremap <silent><C-a>  ^
 nnoremap <silent><C-e>  $
 inoremap <silent>jj     <ESC>
@@ -68,8 +65,6 @@ nnoremap <silent><ESC><ESC> :nohl<CR>
 """ Leader settings """"
 let mapleader = "\<SPACE>"
 nnoremap <Leader>a ggVG
-noremap  <Leader>h ^
-noremap  <Leader>l $
 noremap  <Leader>m %
 nnoremap <Leader>R :%s/<C-r><C-w>//g<LEFT><LEFT>
 

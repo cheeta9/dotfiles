@@ -105,6 +105,32 @@ repo = 'kyazdani42/nvim-web-devicons'
 # タブ操作を簡単にするやつ
 [[plugins]]
 repo = 'romgrk/barbar.nvim'
+hook_add = '''
+nnoremap <C-q>      <Cmd>BufferClose<CR>
+nnoremap <C-h>      <Cmd>BufferPrevious<CR>
+nnoremap <C-l>      <Cmd>BufferNext<CR>
+nnoremap <Leader>h  <Cmd>BufferMovePrevious<CR>
+nnoremap <Leader>l  <Cmd>BufferMoveNext<CR>
+nnoremap <Leader>;  <Cmd>BufferGoto 1<CR>
+nnoremap <Leader>1  <Cmd>BufferGoto 1<CR>
+nnoremap <Leader>2  <Cmd>BufferGoto 2<CR>
+nnoremap <Leader>3  <Cmd>BufferGoto 3<CR>
+nnoremap <Leader>4  <Cmd>BufferGoto 4<CR>
+nnoremap <Leader>5  <Cmd>BufferGoto 5<CR>
+nnoremap <Leader>6  <Cmd>BufferGoto 6<CR>
+nnoremap <Leader>7  <Cmd>BufferGoto 7<CR>
+nnoremap <Leader>8  <Cmd>BufferGoto 8<CR>
+nnoremap <Leader>9  <Cmd>BufferGoto 9<CR>
+nnoremap <Leader>'  <Cmd>BufferLast<CR>
+nnoremap <Leader>p  <Cmd>BufferPick<CR>
+nnoremap <Leader>p  <Cmd>BufferPickDelete<CR>
+nnoremap <Leader>r  <Cmd>BufferRestore<CR>
+nnoremap <Leader>P  <Cmd>BufferPin<CR>
+nnoremap <Leader>bb <Cmd>BufferOrderByBufferNumber<CR>
+nnoremap <Leader>bd <Cmd>BufferOrderByDirectory<CR>
+nnoremap <Leader>bl <Cmd>BufferOrderByLanguage<CR>
+nnoremap <Leader>bw <Cmd>BufferOrderByWindowNumber<CR>
+'''
 
 # JSONを扱いやすくするやつ
 [[plugins]]
