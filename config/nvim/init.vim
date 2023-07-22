@@ -135,3 +135,12 @@ if dein#check_install()
     call dein#install()
 endif
 
+" #####################################
+" ### Highlight settings
+" #####################################
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr ctermbg=none
+highlight Folded ctermbg=none
+highlight EndOfBuffer ctermbg=none
+
