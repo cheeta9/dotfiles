@@ -39,20 +39,20 @@ vim.opt.wrapscan = true                     -- 循環検索する
 
 -- Keymaps
 local keymap = vim.keymap
-keymap.set('', '<silent><C-a>', '^')
-keymap.set('', '<silent><C-e>', '$')
+keymap.set('', '<C-a>', '^', { silent = true })
+keymap.set('', '<C-e>', '$', { silent = true })
 keymap.set('n', ';', ':')
-keymap.set('n', '<silent>sh', '<C-w>h')
-keymap.set('n', '<silent>sj', '<C-w>j')
-keymap.set('n', '<silent>sk', '<C-w>k')
-keymap.set('n', '<silent>sl', '<C-w>l')
-keymap.set('n', '<silent>sH', '<C-w>H')
-keymap.set('n', '<silent>sJ', '<C-w>J')
-keymap.set('n', '<silent>sK', '<C-w>K')
-keymap.set('n', '<silent>sL', '<C-w>L')
-keymap.set('n', '<silent><C-|>', ':vsplit<CR>')
-keymap.set('n', '<silent><C-_>', ':split<CR>')
-keymap.set('n', '<silent><ESC><ESC>', ':nohl<CR>')
+keymap.set('n', 'sh', '<C-w>h', { silent = true })
+keymap.set('n', 'sj', '<C-w>j', { silent = true })
+keymap.set('n', 'sk', '<C-w>k', { silent = true })
+keymap.set('n', 'sl', '<C-w>l', { silent = true })
+keymap.set('n', 'sH', '<C-w>H', { silent = true })
+keymap.set('n', 'sJ', '<C-w>J', { silent = true })
+keymap.set('n', 'sK', '<C-w>K', { silent = true })
+keymap.set('n', 'sL', '<C-w>L', { silent = true })
+keymap.set('n', [[<C-\>]], ':vsplit<CR>', { silent = true })
+keymap.set('n', '<C-_>', ':split<CR>', { silent = true })
+keymap.set('n', '<ESC><ESC>', ':nohl<CR>', { silent = true })
 keymap.set('i', 'jj', '<ESC>')
 
 -- Leder settings
