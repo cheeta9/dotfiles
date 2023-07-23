@@ -25,6 +25,17 @@ require('packer').startup(function()
     "neovim/nvim-lspconfig"
   }
 
+  -- 補完
+  use {
+    'hrsh7th/nvim-cmp',      --補完エンジン本体
+    'hrsh7th/cmp-nvim-lsp',  --LSPを補完ソースに
+    'hrsh7th/cmp-buffer',    --bufferを補完ソースに
+    'hrsh7th/cmp-path',      --pathを補完ソースに
+    'hrsh7th/vim-vsnip',     --スニペットエンジン
+    'hrsh7th/cmp-vsnip',     --スニペットを補完ソースに
+    'onsails/lspkind.nvim'   --補完欄にアイコンを表示
+  }
+
   -- treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
