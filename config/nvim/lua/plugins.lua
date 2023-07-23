@@ -18,6 +18,15 @@ require('packer').startup(function()
       ]]
     end
   }
+  -- airline
+  use 'vim-airline/vim-airline'
+  use {
+    'vim-airline/vim-airline-themes',
+    config = function()
+      vim.g.airline_theme = 'gruvbox'
+    end
+  }
+
   use 'tpope/vim-fugitive'
 
   use { 'wbthomason/packer.nvim', opt = true }
