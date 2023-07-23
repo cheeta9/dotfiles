@@ -36,12 +36,21 @@ require('packer').startup(function()
     'onsails/lspkind.nvim'   --補完欄にアイコンを表示
   }
 
+  -- telescope
+  use 'nvim-telescope/telescope.nvim'
+  use {
+    "nvim-telescope/telescope-frecency.nvim",
+    requires = {"kkharji/sqlite.lua"}
+  }
+
   -- treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
   }
 
+  -- Neovim専用のluaライブラリ
+  use 'nvim-lua/plenary.nvim'
   -- Gitのステータスをファイル左横に表示するやつ
   use 'airblade/vim-gitgutter'
   -- vim上でGit操作可能にするやつ

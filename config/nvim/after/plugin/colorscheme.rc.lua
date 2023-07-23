@@ -9,5 +9,6 @@ vim.cmd [[
   hi EndOfBuffer ctermbg=none
   hi CursorLineNr ctermbg=5 ctermfg=255
   hi clear CursorLine
+  hi TelescopeNormal ctermbg=0
 ]]
 
