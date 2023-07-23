@@ -10,6 +10,12 @@ require('packer').startup(function()
     config = function() vim.g.airline_theme = 'gruvbox' end
   }
 
+  -- ファイラー
+  use 'lambdalisue/fern.vim'
+  use 'lambdalisue/nerdfont.vim'
+  use 'lambdalisue/fern-renderer-nerdfont.vim'
+  use 'lambdalisue/glyph-palette.vim'
+
   -- Gitのステータスをファイル左横に表示するやつ
   use 'airblade/vim-gitgutter'
   -- vim上でGit操作可能にするやつ
