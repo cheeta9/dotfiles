@@ -11,10 +11,19 @@ require('packer').startup(function()
   }
 
   -- ファイラー
-  use 'lambdalisue/fern.vim'
-  use 'lambdalisue/nerdfont.vim'
-  use 'lambdalisue/fern-renderer-nerdfont.vim'
-  use 'lambdalisue/glyph-palette.vim'
+  use {
+    'lambdalisue/fern.vim',
+    'lambdalisue/nerdfont.vim',
+    'lambdalisue/fern-renderer-nerdfont.vim',
+    'lambdalisue/glyph-palette.vim'
+  }
+
+  -- LSP
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig"
+  }
 
   -- treesitter
   use {
