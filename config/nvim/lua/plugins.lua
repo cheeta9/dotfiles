@@ -16,6 +16,12 @@ require('packer').startup(function()
   use 'lambdalisue/fern-renderer-nerdfont.vim'
   use 'lambdalisue/glyph-palette.vim'
 
+  -- treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
+  }
+
   -- Gitのステータスをファイル左横に表示するやつ
   use 'airblade/vim-gitgutter'
   -- vim上でGit操作可能にするやつ
