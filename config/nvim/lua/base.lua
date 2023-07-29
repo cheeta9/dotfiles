@@ -52,7 +52,7 @@ keymap.set('n', 'sK', '<C-w>K', { silent = true })
 keymap.set('n', 'sL', '<C-w>L', { silent = true })
 keymap.set('n', [[<C-\>]], ':vsplit<CR>', { silent = true })
 keymap.set('n', '<C-_>', ':split<CR>', { silent = true })
-keymap.set('n', '<ESC><ESC>', ':nohl<CR>', { silent = true })
+keymap.set('n', '<ESC>', ':nohl<CR>', { silent = true })
 keymap.set('i', 'jj', '<ESC>')
 
 -- Leder settings

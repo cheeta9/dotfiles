@@ -74,8 +74,8 @@ require('packer').startup(function()
   use {
     'terryma/vim-expand-region',
     config = function()
-      vim.keymap.set('', 'v', '<Plug>(expand_region_expand)')
-      vim.keymap.set('', 'V', '<Plug>(expand_region_shrink)')
+      vim.keymap.set('v', 'v', '<Plug>(expand_region_expand)')
+      vim.keymap.set('v', 'V', '<Plug>(expand_region_shrink)')
     end
   }
   -- JSONを扱いやすくするやつ
