@@ -9,8 +9,9 @@ alias be='bundle exec'
 
 ### fzf ###
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS='--reverse --border --ansi --bind="ctrl-d:print-query,ctrl-p:replace-query"'
+export FZF_DEFAULT_OPTS='--reverse --border'
 export FZF_DEFAULT_COMMAND='fd --hidden --color=always'
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
 
 ### bat ###
 export MANPAGER="sh -c 'col -bx | bat --color=always --language=man --plain'"
