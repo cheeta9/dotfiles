@@ -24,6 +24,7 @@ vim.opt.hidden = true                       -- 変更中でも保存せず他の
 vim.opt.ignorecase = true                   -- 大文字と小文字を区別しない
 vim.opt.incsearch = true                    -- インクリメンタルサーチする
 vim.opt.infercase = true                    -- 補完のときに大文字と小文字を区別しない
+vim.opt.modifiable = true                   -- 特殊ウィンドウからの編集を有効にする
 vim.opt.number = true                       -- 行番号を表示する
 vim.opt.shiftround = true                   -- インデントをshiftwidthの倍数にする
 vim.opt.smartindent = true
@@ -36,6 +37,7 @@ vim.opt.visualbell = false
 vim.opt.wildmenu = true                     -- ナビゲーションバーを表示する
 vim.opt.wrap = true                         -- ウィンドウより長い行は折りたたむ
 vim.opt.wrapscan = true                     -- 循環検索する
+vim.opt.write = true
 
 -- Keymaps
 local keymap = vim.keymap
