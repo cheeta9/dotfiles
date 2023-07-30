@@ -19,11 +19,11 @@ telescope.setup{
 }
 telescope.load_extension('frecency')
 
-vim.keymap.set('n', '<C-p>', function()
+vim.keymap.set('n', '[[<C-[>]]', function()
   builtin.find_files({ no_ignore = false, hidden = true })
 end)
 
-vim.keymap.set('n', ',e', function()
+vim.keymap.set('n', '<C-p>', function()
   local function is_git_repo()
     vim.fn.system('git rev-parse --is-inside-work-tree')
     return vim.v.shell_error == 0
