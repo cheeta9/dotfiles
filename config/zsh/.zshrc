@@ -59,7 +59,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 ### nodebrew ###
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
 ### mysql ###
-export PATH="/opt/homebrew/opt/mysql@5.7/bin:$PATH"
+export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
 ### openssl ###
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 ### direnv ###
