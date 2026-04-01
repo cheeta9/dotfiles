@@ -8,5 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: Setup
-        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/cheeta9/dotfiles/main/install.sh)"
+        run: /bin/bash scripts/setup.bash
