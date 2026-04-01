@@ -44,7 +44,7 @@ setopt HIST_REDUCE_BLANKS     # 余分な空白は詰めて記録
 setopt HIST_SAVE_NO_DUPS      # 古いコマンドと同じものは無視
 setopt MAGIC_EQUAL_SUBST      # 「=」以降の補完を有効にする
 setopt NO_FLOW_CONTROL        # Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
-setopt NO_SHARE_HISTORY       # 履歴を共有しない
+setopt SHARE_HISTORY          # 履歴を共有する
 setopt INTERACTIVE_COMMENTS   # 「#」以降をコメントとして扱う
 setopt PRINT_EIGHT_BIT        # 日本語ファイル名を表示可能にする
 setopt PUSHD_IGNORE_DUPS      # 重複するディレクトリはスタックに積まない
@@ -56,6 +56,9 @@ eval "$(anyenv init -)"
 ### rbenv ###
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+### pyenv ###
+export PATH="$HOME/.pyenv/bin:$PATH"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 ### nodebrew ###
 export PATH="$HOME/.nodebrew/current/bin:$PATH"
 ### mysql ###
