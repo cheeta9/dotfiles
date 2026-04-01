@@ -6,3 +6,13 @@ local.*
 ### Zsh cache ###
 *.zwc
 .zcomp*
+
+### Zsh history/sessions ###
+config/zsh/.zsh_history
+config/zsh/.zsh_sessions/
+
+### Neovim ###
+config/nvim/lazy-lock.json
+
+### macOS ###
+.DS_Store
