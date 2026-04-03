@@ -19,4 +19,6 @@
     conflictStyle = diff3
 [credential]
     helper = osxkeychain
+[ghq]
+    root = ~/src
 

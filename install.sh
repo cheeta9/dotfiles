@@ -1,5 +1,5 @@
 #!/bin/bash
-INSTALL_DIR="${INSTALL_DIR:-$HOME/repos/github.com/cheeta9/dotfiles}"
+INSTALL_DIR="${INSTALL_DIR:-$HOME/src/dotfiles}"
 
 if [ -d "$INSTALL_DIR" ]; then
     echo "Updating dotfiles..."
