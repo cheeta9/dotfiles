@@ -19,6 +19,7 @@ vim.opt.whichwrap = 'b,s,h,l,<,>,[,]'
 vim.opt.autoindent = true
 vim.opt.cursorline = true -- カーソル行をハイライトする
 vim.opt.expandtab = true
+vim.opt.fixeol = false    -- 末尾改行が無いファイルは改行を付けずに保存する（自動付与しない）
 vim.opt.hlsearch = true   -- 検索結果をハイライト表示する
 vim.opt.hidden = true     -- 変更中でも保存せず他のファイルを表示する
 vim.opt.ignorecase = true -- 大文字と小文字を区別しない
