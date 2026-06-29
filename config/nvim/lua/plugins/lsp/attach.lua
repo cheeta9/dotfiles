@@ -56,12 +56,17 @@ local function attach_callback(ev)
   vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", bufopts)
 end
 
--- vim.api.nvim_create_autocmd("LspAttach", {
---   group = "my_nvim_rc",
---   callback = function(ev)
---     attach_callback(ev)
---   end,
--- })
+-- NOTE: `my_nvim_rc` は format.lua でも参照されるが、augroup自体はここで一度だけ作る。
+--       これが未作成のままだと nvim_create_autocmd が E5108 で落ち、LSPキーマップが
+--       一切設定されなくなる（過去にコメントアウトされていた原因）。
+local augroup = vim.api.nvim_create_augroup("my_nvim_rc", { clear = true })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = augroup,
+  callback = function(ev)
+    attach_callback(ev)
+  end,
+})
 
 -- vim.api.nvim_create_autocmd({ "FileType" }, {
 --   group = "my_nvim_rc",
