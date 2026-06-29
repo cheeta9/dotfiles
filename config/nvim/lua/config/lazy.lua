@@ -28,7 +28,7 @@ require("lazy").setup({
         { import = "plugins.barbar" },
         { import = "plugins.colorscheme" },
         { import = "plugins.completion" },
-        { import = "plugins.eazymotion" },
+        { import = "plugins.flash" },
         { import = "plugins.git" },
         { import = "plugins.lsp.index" },
         { import = "plugins.lualine" },
