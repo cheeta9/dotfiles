@@ -56,7 +56,7 @@ return {
         end,
         keys = {
             {
-                "<C-a>",
+                "g<C-a>",
                 function()
                     require("dial.map").manipulate("increment", "normal")
                 end,
@@ -64,7 +64,7 @@ return {
                 desc = "dial increment",
             },
             {
-                "<C-x>",
+                "g<C-x>",
                 function()
                     require("dial.map").manipulate("decrement", "normal")
                 end,
@@ -72,7 +72,7 @@ return {
                 desc = "dial decrement",
             },
             {
-                "<C-a>",
+                "g<C-a>",
                 function()
                     require("dial.map").manipulate("increment", "visual")
                 end,
@@ -80,7 +80,7 @@ return {
                 desc = "dial increment",
             },
             {
-                "<C-x>",
+                "g<C-x>",
                 function()
                     require("dial.map").manipulate("decrement", "visual")
                 end,
