@@ -13,7 +13,7 @@ return {
                     },
                 },
                 pickers = {},
-                extentions = {},
+                extensions = {},
             })
 
             -- key mappings

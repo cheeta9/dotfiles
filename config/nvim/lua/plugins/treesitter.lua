@@ -27,7 +27,7 @@ return {
         'RRethy/nvim-treesitter-textsubjects',
         config = function()
             require("nvim-treesitter-textsubjects").configure({
-                prev_selectio = ",",
+                prev_selection = ",",
                 keymaps = {
                     ["."] = "textsubjects-smart",
                     ["<CR>"] = "textsubjects-container-outer",
