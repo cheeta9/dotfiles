@@ -1,14 +1,29 @@
 return {
-    -- Gitのステータスをファイル左横に表示するやつ
+    -- Gitのステータスをファイル左横に表示するやつ (旧 vim-gitgutter を gitsigns に一本化)
+    -- barbar もこのプラグインをタブのgitステータス表示に使う
     {
-        'airblade/vim-gitgutter',
+        'lewis6991/gitsigns.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             vim.opt.updatetime = 100
-            vim.keymap.set('n', ']h', '<Plug>(GitGutterNextHunk)')
-            vim.keymap.set('n', '[h', '<Plug>(GitGutterPrevHunk)')
-            vim.keymap.set('n', 'ghs', '<Plug>(GitGutterStageHunk)')
-            vim.keymap.set('n', 'ghu', '<Plug>(GitGutterUndoHunk)')
-            vim.keymap.set('n', 'ghp', '<Plug>(GitGutterPreviewHunk)')
+            local gs = require('gitsigns')
+            gs.setup({
+                on_attach = function(bufnr)
+                    local function map(lhs, rhs, desc)
+                        vim.keymap.set('n', lhs, rhs, { buffer = bufnr, desc = desc })
+                    end
+                    -- hunk移動 (gitgutter の ]h / [h を踏襲)
+                    map(']h', function() gs.nav_hunk('next') end, 'Next hunk')
+                    map('[h', function() gs.nav_hunk('prev') end, 'Prev hunk')
+                    -- hunk操作 (gitgutter の gh* を踏襲)
+                    map('ghs', gs.stage_hunk, 'Stage hunk')
+                    map('ghu', gs.reset_hunk, 'Reset hunk (作業変更を破棄)')
+                    map('ghp', gs.preview_hunk, 'Preview hunk')
+                    -- gitsigns で増えた便利機能
+                    map('ghb', function() gs.blame_line({ full = true }) end, 'Blame line')
+                    map('ghB', gs.toggle_current_line_blame, 'Toggle line blame')
+                end,
+            })
         end,
     },
 
