@@ -1,6 +1,10 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+-- WEZTERM_CONFIG_FILE で任意パスから読み込む場合、そのディレクトリは
+-- 自動ではrequireの検索パスに入らないため明示的に追加する
+package.path = wezterm.config_dir .. "/?.lua;" .. package.path
+
 config.color_scheme = "iceberg-dark"
 config.automatically_reload_config = true
 config.use_ime = true
@@ -8,10 +12,17 @@ config.use_ime = true
 ----------------------------------------------------
 -- font
 ----------------------------------------------------
-config.font = wezterm.font_with_fallback({
-	{ family = "Monaco", weight = "Bold" },
-	{ family = "Hiragino Kaku Gothic ProN", weight = "Bold" },
-})
+if wezterm.target_triple:find("windows") then
+	config.font = wezterm.font_with_fallback({
+		{ family = "Cascadia Mono", weight = "Bold" },
+		{ family = "Noto Sans JP", weight = "Bold" },
+	})
+else
+	config.font = wezterm.font_with_fallback({
+		{ family = "Monaco", weight = "Bold" },
+		{ family = "Hiragino Kaku Gothic ProN", weight = "Bold" },
+	})
+end
 config.font_size = 12.5
 
 ----------------------------------------------------
@@ -103,6 +114,25 @@ tabline.setup({
 	},
 	extensions = {},
 })
+
+----------------------------------------------------
+-- windows / WSL
+----------------------------------------------------
+if wezterm.target_triple:find("windows") then
+	-- 自動生成される"WSL:Ubuntu-20.04"ドメインと名前が衝突すると
+	-- default_cwdが無視されるため、別名にして明示的に使う
+	config.wsl_domains = {
+		{
+			name = "WSL:Ubuntu-20.04-home",
+			distribution = "Ubuntu-20.04",
+			username = "takah",
+			default_cwd = "/home/takah",
+		},
+	}
+	-- 新規タブボタンを非表示にしているため、ダブルクリック等の
+	-- DefaultDomain経由のタブ作成もWindowsローカルではなくWSL側にする
+	config.default_domain = "WSL:Ubuntu-20.04-home"
+end
 
 ----------------------------------------------------
 -- keybinds
