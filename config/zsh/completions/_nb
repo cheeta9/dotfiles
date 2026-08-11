@@ -1,0 +1,95 @@
+#compdef nb
+###############################################################################
+# nb subcommand + note path completion.
+#
+# `nb <notebook>:<command>` の後ろで、対象ノートブック配下のファイル/フォルダを
+# 補完する(nb本家の補完はサブコマンド名までしか補完しないため)。
+###############################################################################
+
+# nb本家(etc/nb-completion.zsh)のサブコマンド補完をそのまま利用する
+_nb_subcommands() {
+  local _cache_path="${NB_DIR:?}/.cache/nb-completion-cache-v2"
+  local _completions_cached=()
+
+  if [[ ! -e "${_cache_path}" ]]
+  then
+    local _commands=
+    IFS=$'\n' _commands=($(nb subcommands))
+
+    local _notebooks=
+    IFS=$'\n' _notebooks=($(nb notebooks --names --no-color --unarchived))
+
+    local _completions=("${_commands[@]}")
+
+    local __notebook=
+    for   __notebook in "${_notebooks[@]}"
+    do
+      local __command=
+      for   __command in "${_commands[@]}"
+      do
+        _completions+=("${__notebook}:${__command}")
+      done
+    done
+
+    mkdir -p "${_cache_path:h}"
+    {
+      (IFS=$' '; printf "%s\\n" "${_commands[*]}")
+      (IFS=$' '; printf "%s\\n" "${_notebooks[*]}")
+      printf "%s\\n" "${_completions[@]}"
+    } > "${_cache_path}"
+  fi
+
+  local _counter=0
+  local __line=
+  while IFS= read -r __line
+  do
+    _counter=$((_counter+1))
+    ((_counter > 2)) && _completions_cached+=("${__line}")
+  done < "${_cache_path}"
+
+  compadd -- "${_completions_cached[@]}"
+}
+
+# <notebook>:<command> の<notebook>部分に対応するディレクトリを返す
+_nb_notebook_dir() {
+  local _notebook="${1:-}"
+
+  [[ -z "${_notebook}" ]] && _notebook="$(<"${NB_DIR}/.current" 2>/dev/null)"
+  [[ -z "${_notebook}" ]] && _notebook="home"
+
+  print -r -- "${NB_DIR}/${_notebook}"
+}
+
+_nb() {
+  [[ -z "${NB_DIR:-}" ]] && return 1
+
+  # `nb <TAB>` / `nb ho<TAB>` (サブコマンド or notebook:サブコマンド)
+  if (( CURRENT == 2 ))
+  then
+    _nb_subcommands
+    return 0
+  fi
+
+  # words[2] が "<notebook>:<command>" か "<command>" かを判定
+  local _first_arg="${words[2]}"
+  local _notebook="" _subcommand="${_first_arg}"
+
+  if [[ "${_first_arg}" == *:* ]]
+  then
+    _notebook="${_first_arg%%:*}"
+    _subcommand="${_first_arg#*:}"
+  fi
+
+  case "${_subcommand}" in
+    edit|show|open|delete|peek|cat)
+      local _dir
+      _dir="$(_nb_notebook_dir "${_notebook}")"
+      [[ -d "${_dir}" ]] && _path_files -W "${_dir}"
+      ;;
+    *)
+      _nb_subcommands
+      ;;
+  esac
+}
+
+_nb "$@"
