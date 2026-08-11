@@ -1,9 +1,15 @@
+-- glibcが古いマシンでは新しいnvimが使えず、nvim-treesitterのmainブランチ(新API)は
+-- この設定(旧configs API)と非互換のため、そのnvimでのみ旧APIを維持しているmaster
+-- ブランチに固定する(新しいnvimが使えるMacなどはそのままmainを追従させる)
+local is_old_nvim = vim.fn.has("nvim-0.11") == 0
+
 return {
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = is_old_nvim and 'master' or nil,
         build = ':TSUpdate',
         dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
+            { 'nvim-treesitter/nvim-treesitter-textobjects', branch = is_old_nvim and 'master' or nil },
         },
         main = 'nvim-treesitter.configs',
         opts = {
