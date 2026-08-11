@@ -1,6 +1,47 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+-- wezterm はdefault_cwdを最初のウィンドウにしか適用しないため
+-- (https://github.com/wezterm/wezterm/issues/2126, #5902)、
+-- 新規タブ作成時は明示的にcwdを指定して回避する
+-- macではCurrentPaneDomainのまま(SSHドメイン等を維持する挙動を変えない)
+local new_tab_domain = "CurrentPaneDomain"
+local new_tab_cwd = nil
+if wezterm.target_triple:find("windows") then
+	new_tab_domain = "DefaultDomain"
+	new_tab_cwd = "/home/takah"
+end
+
+-- 上と同じ理由(CurrentPaneDomainだけではcwdが引き継がれないことがある)で、
+-- 分割時は分割元ペインの実際のcwdを取得して明示的に渡す
+-- LocalドメインのペインでもLinux側のcwdが取れる場合(wezterm shell integration/OSC7)は、
+-- そのままCurrentPaneDomainに渡すとWindows側で無効なパスになるため、WSLドメインへ切り替える
+local wsl_domain = "WSL:Ubuntu-20.04-home"
+local function split_pane(direction)
+	return wezterm.action_callback(function(window, pane)
+		local cwd_uri = pane:get_current_working_dir()
+		local cwd = cwd_uri and cwd_uri.file_path or nil
+		local domain = "CurrentPaneDomain"
+
+		if cwd and cwd:match("^/[A-Za-z]:") then
+			-- file:///C:/... のURLパスは先頭に余計な"/"が付く(/C:/Users/...)ので、
+			-- Windowsパスとして使えるよう取り除く
+			cwd = cwd:sub(2)
+		elseif cwd and wezterm.target_triple:find("windows") then
+			-- "/home/..." のようなLinuxパスならWSLドメインへ
+			domain = { DomainName = wsl_domain }
+		end
+
+		window:perform_action(
+			act.SplitPane({
+				direction = direction,
+				command = { domain = domain, cwd = cwd },
+			}),
+			pane
+		)
+	end)
+end
+
 return {
 	keys = {
 		{
@@ -60,7 +101,11 @@ return {
 		-- Tab入れ替え
 		{ key = "{", mods = "LEADER", action = act({ MoveTabRelative = -1 }) },
 		-- Tab新規作成
-		{ key = "t", mods = "LEADER", action = act({ SpawnTab = "CurrentPaneDomain" }) },
+		{
+			key = "t",
+			mods = "LEADER",
+			action = act.SpawnCommandInNewTab({ domain = new_tab_domain, cwd = new_tab_cwd }),
+		},
 		-- Tabを閉じる
 		{ key = "w", mods = "CTRL", action = act({ CloseCurrentTab = { confirm = true } }) },
 		{ key = "}", mods = "LEADER", action = act({ MoveTabRelative = 1 }) },
@@ -76,9 +121,9 @@ return {
 		{ key = "v", mods = "SUPER", action = act.PasteFrom("Clipboard") },
 
 		-- Pane作成
-		{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
-		{ key = "|", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "/", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "-", mods = "LEADER", action = split_pane("Down") },
+		{ key = "|", mods = "LEADER", action = split_pane("Right") },
+		{ key = "/", mods = "LEADER", action = split_pane("Right") },
 		-- Paneを閉じる
 		{ key = "x", mods = "LEADER", action = act({ CloseCurrentPane = { confirm = true } }) },
 		-- Pane移動
