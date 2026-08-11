@@ -50,7 +50,9 @@ setopt PRINT_EIGHT_BIT        # 日本語ファイル名を表示可能にする
 setopt PUSHD_IGNORE_DUPS      # 重複するディレクトリはスタックに積まない
 
 ### homebrew ###
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 ### anyenv ###
 eval "$(anyenv init -)"
 ### rbenv ###
@@ -79,4 +81,3 @@ bindkey '^j' autosuggest-execute
 zinit wait lucid null for \
     atinit'source "$ZDOTDIR/.zshrc.lazy"' \
     @'zdharma-continuum/null'
-
