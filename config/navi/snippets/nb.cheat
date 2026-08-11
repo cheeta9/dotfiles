@@ -1,0 +1,24 @@
+% nb
+
+# nb: Write or edit today's diary entry (creates + syncs)
+diary
+
+# nb: List notes in a notebook
+nb <notebook>:ls
+
+$ notebook: nb notebooks --no-color | awk '{print $1}'
+
+# nb: Search notes in a notebook
+nb <notebook>:search <query>
+
+$ notebook: nb notebooks --no-color | awk '{print $1}'
+
+# nb: Sync a notebook with its GitHub remote
+nb <notebook>:sync
+
+$ notebook: nb notebooks --no-color | awk '{print $1}'
+
+# nb: Switch the default notebook
+nb use <notebook>
+
+$ notebook: nb notebooks --no-color | awk '{print $1}'
