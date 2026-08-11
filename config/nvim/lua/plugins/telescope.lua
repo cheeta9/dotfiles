@@ -1,6 +1,12 @@
+-- glibcが古いマシン(Ubuntu 20.04など)ではnvim 0.11以降のバイナリが動かせないため、
+-- そのnvimでのみ、nvim-0.11必須になる直前のコミットにピン留めする
+-- (新しいnvimが使えるMacなどはそのまま最新を追従させる)
+local is_old_nvim = vim.fn.has("nvim-0.11") == 0
+
 return {
     {
         "nvim-telescope/telescope.nvim",
+        commit = is_old_nvim and "5255aa27c422de944791318024167ad5d40aad20" or nil,
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             require("telescope").setup({
