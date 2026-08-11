@@ -13,5 +13,9 @@ export DENO_INSTALL="$XDG_DATA_HOME/deno"
 ### nb ###
 export NB_DIR="$HOME/src/github.com/cheeta9/nb"
 
+### editor ###
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 ### zsh ###
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
