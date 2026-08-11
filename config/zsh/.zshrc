@@ -74,6 +74,17 @@ eval "$(direnv hook zsh)"
 ### theme ###
 eval "$(starship init zsh)"
 
+### wezterm ###
+# WSL上のzshをLocalドメインのペイン(wsl.exe経由)から使う場合、
+# weztermはOSC7を送らないとカレントディレクトリを追跡できない。
+# ペインを開いた直後の分割でも効いてほしいため、非同期ロードの
+# .zshrc.lazyではなくここ(起動時に同期的に読み込まれる)に置く
+_wezterm_update_cwd() {
+    printf '\033]7;file://%s%s\033\\' "${HOST}" "${PWD}"
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _wezterm_update_cwd
+
 ### key binds ###
 bindkey '^k' autosuggest-accept
 bindkey '^j' autosuggest-execute
