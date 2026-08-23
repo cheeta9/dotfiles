@@ -96,6 +96,20 @@ zinit wait lucid light-mode as'program' from'gh-r' for \
     @'dbrgn/tealdeer'
 
 ### functions ###
+#diary - open (or create) today's nb diary entry and sync
+diary() {
+  local note_path
+  note_path="$(date +%Y)/$(date +%m)/$(date +%d).md"
+
+  if nb diary:show "$note_path" &>/dev/null; then
+    nb diary:edit "$note_path"
+  else
+    nb diary:add "$note_path"
+  fi
+
+  nb diary:sync
+}
+
 #fbr - checkout git branch
 fbr() {
   local branches branch
