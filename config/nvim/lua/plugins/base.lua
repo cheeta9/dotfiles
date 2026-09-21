@@ -94,8 +94,6 @@ return {
     {
         "elzr/vim-json",
         config = function()
-            vim.opt.conceallevel = 2
-            vim.opt.concealcursor = "niv"
             vim.g.vim_json_syntax_conceal = 0
         end,
     },
