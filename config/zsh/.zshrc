@@ -17,12 +17,6 @@ path=(
     "$path[@]"
 )
 
-fpath=(
-    "$XDG_DATA_HOME/zsh/completions"(N-/)
-    "$XDG_CONFIG_HOME/zsh/completions"(N-/)
-    "$fpath[@]"
-)
-
 ### history ###
 export HISTFILE="$XDG_STATE_HOME/zsh_history"
 export HISTSIZE=12000
@@ -84,6 +78,16 @@ _wezterm_update_cwd() {
 }
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd _wezterm_update_cwd
+
+### completions ###
+# homebrew や anyenv/rbenv などの init は fpath の先頭に自前のパスを挿入するため、
+# それらより後で自作 completions を最優先に戻す(でないと $XDG_CONFIG_HOME/zsh/completions/_nb が
+# homebrew の site-functions/_nb に負ける)
+fpath=(
+    "$XDG_DATA_HOME/zsh/completions"(N-/)
+    "$XDG_CONFIG_HOME/zsh/completions"(N-/)
+    "$fpath[@]"
+)
 
 ### key binds ###
 bindkey '^k' autosuggest-accept
