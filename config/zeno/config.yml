@@ -407,6 +407,23 @@ snippets:
     context:
       lbuffer: ^java\s
 
+  # nb
+  - name: Edit Note
+    keyword: nbe
+    snippet: nb edit
+
+  - name: List Note
+    keyword: nbl
+    snippet: nb ls --limit 20
+
+  - name: List All Note
+    keyword: nbla
+    snippet: nb ls --all
+
+  - name: nb search
+    keyword: nbg
+    snippet: rg "{{}}" "$(nb notebooks current --path)"
+
 .default-options: &default-options
   --exit-0: true
   --select-1: true
@@ -546,4 +563,25 @@ completions:
       )
     options: *format-options
     callback: awk '{ print $3 }'
+
+  # nb
+  - name: nb edit
+    patterns:
+      - "^nb e( .*)? $"
+      - "^nb edit( .*)? $"
+    # 現在ノートブック配下の全ノートを再帰的にフラット列挙（階層ノートも対象）
+    sourceCommand: 'base="$(nb notebooks current --path)"; find "$base" -type f ! -path "*/.git/*" ! -name ".*" | sed "s|$base/||" | sort'
+    options:
+      --ansi: true
+      --prompt: "'nb edit >'"
+      --preview: "nb show {} --no-color"
+    callback: cat
+
+  - name: nb subcommands
+    patterns:
+      - ^\s*nb\s*$
+      - ^\s*nb\s+help\s*$
+    sourceCommand: nb subcommands
+    options:
+      --prompt: "'nb subcommand >'"
 
